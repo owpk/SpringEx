@@ -11,7 +11,11 @@ public class TestSpring {
         //внедрение зависимости
         //MusicPlayer musicPlayer = new MusicPlayer(testBean);
 
+
+        //по умолчанию используется singleton
         MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        //prototype всегда возвращает новый объект
+
         musicPlayer.playMusic();
 
         context.close();
