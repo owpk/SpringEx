@@ -7,21 +7,14 @@ public class TestSpring {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("" +
                 "applicationcontext.xml");
 
-        //Music testBean = context.getBean("musicBean", Music.class);
-        //внедрение зависимости
-        //MusicPlayer musicPlayer = new MusicPlayer(testBean);
+        Music music = context.getBean("rockMusic", Music.class);
+        Music music2 = context.getBean("classicalMusic", Music.class);
 
+        MusicPlayer player = new MusicPlayer(music);
+        MusicPlayer player1 = new MusicPlayer(music2);
 
-        //по умолчанию используется singleton
-        //MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        //prototype всегда возвращает новый объекта
-
-        //musicPlayer.playMusic();
-
-
-        //для prototype бинов метод destroy не вызывается
-        ClassicalMusic cm = context.getBean("musicBean",ClassicalMusic.class);
-        System.out.println(cm.getSong());
+        player.playMusic();
+        player1.playMusic();
 
         context.close();
     }
