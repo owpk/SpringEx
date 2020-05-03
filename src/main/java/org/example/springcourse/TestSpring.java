@@ -13,10 +13,15 @@ public class TestSpring {
 
 
         //по умолчанию используется singleton
-        MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
-        //prototype всегда возвращает новый объект
+        //MusicPlayer musicPlayer = context.getBean("musicPlayer", MusicPlayer.class);
+        //prototype всегда возвращает новый объекта
 
-        musicPlayer.playMusic();
+        //musicPlayer.playMusic();
+
+
+        //для prototype бинов метод destroy не вызывается
+        ClassicalMusic cm = context.getBean("musicBean",ClassicalMusic.class);
+        System.out.println(cm.getSong());
 
         context.close();
     }
